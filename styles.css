@@ -233,7 +233,7 @@ p {
 
 .two-column > .card {
   align-self: start;
-  margin-top: 0;
+  margin-top: 4px;
 }
 
 /* Timeline */
