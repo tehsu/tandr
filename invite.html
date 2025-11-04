@@ -50,16 +50,24 @@
       position: relative;
       max-width: 540px;
       width: 100%;
+      min-height: 700px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
     }
 
     .envelope {
-      position: relative;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
-      height: 380px;
+      height: 400px;
       background: linear-gradient(135deg, #d4c5b9 0%, #c9b8a8 100%);
       border-radius: 8px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
+      overflow: visible;
+      z-index: 1;
     }
 
     .envelope::before {
@@ -71,6 +79,7 @@
       height: 100%;
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
       pointer-events: none;
+      border-radius: 8px;
     }
 
     .envelope-flap {
@@ -82,7 +91,7 @@
       background: linear-gradient(135deg, #c9b8a8 0%, #b8a393 100%);
       transform-origin: top center;
       clip-path: polygon(0 0, 50% 60%, 100% 0);
-      z-index: 10;
+      z-index: 100;
       animation: openFlap 1.2s ease-out 0.5s forwards;
     }
 
@@ -109,33 +118,29 @@
     }
 
     .invite-card {
-      position: relative;
-      max-width: 540px;
-      width: 100%;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 500px;
+      width: calc(100% - 40px);
       background: var(--bg-soft);
       border-radius: 26px;
       border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
       padding: 32px 28px 30px;
       text-align: center;
-      transform: translateY(0);
-      animation: slideOut 1.5s ease-out 1.2s forwards;
-      z-index: 5;
+      animation: slideOutOfEnvelope 2s ease-out 1.5s forwards;
+      z-index: 50;
     }
 
-    @keyframes slideOut {
+    @keyframes slideOutOfEnvelope {
       0% {
-        transform: translateY(0);
-        opacity: 0.95;
+        bottom: 20px;
       }
       100% {
-        transform: translateY(-420px);
-        opacity: 1;
+        bottom: 320px;
       }
-    }
-
-    .invite-card.animated {
-      animation: slideOut 1.5s ease-out 1.2s forwards;
     }
 
     .invite-monogram {
@@ -276,8 +281,12 @@
 
     /* Small screens */
     @media (max-width: 480px) {
+      .envelope-wrapper {
+        min-height: 600px;
+      }
+
       .envelope {
-        height: 320px;
+        height: 350px;
       }
 
       .envelope-flap {
@@ -287,16 +296,15 @@
       .invite-card {
         padding: 24px 18px 22px;
         border-radius: 20px;
+        width: calc(100% - 30px);
       }
 
-      @keyframes slideOut {
+      @keyframes slideOutOfEnvelope {
         0% {
-          transform: translateY(0);
-          opacity: 0.95;
+          bottom: 20px;
         }
         100% {
-          transform: translateY(-360px);
-          opacity: 1;
+          bottom: 280px;
         }
       }
 
