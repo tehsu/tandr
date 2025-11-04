@@ -186,11 +186,13 @@ body {
 h2 {
   font-family: "Playfair Display", serif;
   font-size: 1.8rem;
+  margin-top: 0;
   margin-bottom: 18px;
 }
 
 h3 {
   font-size: 1.1rem;
+  margin-top: 0;
   margin-bottom: 8px;
 }
 
@@ -226,7 +228,12 @@ p {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 26px;
-  align-items: flex-start;
+  align-items: start;
+}
+
+.two-column > .card {
+  align-self: start;
+  margin-top: 0;
 }
 
 /* Timeline */
