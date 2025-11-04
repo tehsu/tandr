@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Raiyan &amp; Tehseen — Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Wedding invitation for Raiyan &amp; Tehseen, December 19, 2025 in Boca Raton, Florida." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f5f2;
+      --bg-soft: #ffffff;
+      --accent: #b5838d;
+      --accent-soft: #ffe5ec;
+      --text-main: #252422;
+      --text-muted: #66615b;
+      --border-subtle: #e0ded8;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 35px rgba(15, 10, 6, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background: radial-gradient(circle at top left, #fffdf8 0, #f7f5f2 45%, #f0ece7 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .invite-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .invite-card {
+      max-width: 540px;
+      width: 100%;
+      background: var(--bg-soft);
+      border-radius: 26px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 28px 30px;
+      text-align: center;
+    }
+
+    .invite-monogram {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .invite-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .invite-names {
+      font-family: "Playfair Display", serif;
+      font-size: 2.1rem;
+      margin: 0 0 6px;
+    }
+
+    .invite-ampersand {
+      letter-spacing: 0.1em;
+    }
+
+    .invite-date-location {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin: 0 0 18px;
+    }
+
+    .divider {
+      width: 60%;
+      max-width: 220px;
+      height: 1px;
+      margin: 18px auto 20px;
+      background: linear-gradient(to right, transparent, var(--accent-soft), transparent);
+    }
+
+    .invite-subtitle {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .invite-line {
+      margin: 2px 0;
+    }
+
+    .invite-line strong {
+      font-weight: 600;
+    }
+
+    .invite-parents {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    .invite-section {
+      margin-top: 18px;
+    }
+
+    .invite-section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .invite-venue {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .invite-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .rsvp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 18px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      background: var(--accent);
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid transparent;
+      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, background 0.12s ease-out;
+    }
+
+    .rsvp-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 40px rgba(181, 131, 141, 0.35);
+    }
+
+    .footer-small {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Small screens */
+    @media (max-width: 480px) {
+      .invite-card {
+        padding: 24px 18px 22px;
+        border-radius: 20px;
+      }
+      .invite-names {
+        font-size: 1.85rem;
+      }
+    }
+
+    /* Print styles: make it a clean card for PDF/printing */
+    @media print {
+      @page {
+        size: 5in 7in; /* you can change to 'letter portrait' if you prefer full page */
+        margin: 0.5in;
+      }
+
+      body {
+        background: #ffffff !important;
+      }
+
+      .invite-page {
+        padding: 0;
+        align-items: stretch;
+      }
+
+      .invite-card {
+        box-shadow: none;
+        border-radius: 0;
+        border: 1px solid #dddddd;
+        max-width: none;
+        width: 100%;
+      }
+
+      .rsvp-button {
+        display: none !important; /* hide the web-only button when printing */
+      }
+
+      .footer-small {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="invite-page">
+    <div class="invite-card">
+      <div class="invite-monogram">R &amp; T</div>
+      <div class="invite-eyebrow">We’re getting married</div>
+
+      <h1 class="invite-names">
+        Raiyan <span class="invite-ampersand">&amp;</span> Tehseen
+      </h1>
+
+      <p class="invite-date-location">
+        Friday, December 19, 2025 • Boca Raton, Florida
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="invite-subtitle">You are warmly invited to celebrate with us</p>
+      <p class="invite-line">Nikkah &amp; Reception</p>
+
+      <div class="invite-section">
+        <div class="invite-section-title">Schedule</div>
+        <p class="invite-line"><strong>Guest arrival:</strong> 3:30 PM</p>
+        <p class="invite-line"><strong>Ceremony:</strong> 4:00 PM</p>
+        <p class="invite-line"><strong>Reception:</strong> 6:00 PM</p>
+      </div>
+
+      <div class="invite-section">
+        <div class="invite-section-title">Venue</div>
+        <p class="invite-venue">
+          The Example Hall<br />
+          1234 Wedding Street<br />
+          Boca Raton, FL
+        </p>
+        <p class="invite-note">
+          Parking is available on-site. Rideshare drop-off is at the main entrance.
+        </p>
+      </div>
+
+      <div class="invite-section">
+        <p class="invite-line">
+          Kindly RSVP by <strong>December 7, 2025</strong>.
+        </p>
+        <a
+          class="rsvp-button"
+          href="https://forms.gle/your-rsvp-form-here"
+          target="_blank"
+          rel="noreferrer"
+        >
+          RSVP online
+        </a>
+      </div>
+
+      <p class="invite-parents">
+        We can’t wait to celebrate with you.<br />
+        — Raiyan &amp; Tehseen
+      </p>
+
+      <p class="footer-small">© 2025 Raiyan &amp; Tehseen</p>
+    </div>
+  </div>
+</body>
+</html>
+
