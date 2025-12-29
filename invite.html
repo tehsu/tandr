@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Raiyan &amp; Tehseen — Invitation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Wedding invitation for Raiyan &amp; Tehseen, December 19, 2025 in Boca Raton, Florida." />
+  <meta name="description"
+    content="Wedding invitation for Raiyan &amp; Tehseen, December 19, 2025 in Boca Raton, Florida." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg: #f7f5f2;
       --bg-soft: #ffffff;
       --accent: #b5838d;
       --accent-soft: #ffe5ec;
+      --accent-gold: #d4af37;
       --text-main: #252422;
       --text-muted: #66615b;
       --border-subtle: #e0ded8;
@@ -25,7 +30,8 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
     }
@@ -35,6 +41,21 @@
       color: var(--text-main);
       background: radial-gradient(circle at top left, #fffdf8 0, #f7f5f2 45%, #f0ece7 100%);
       -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(181, 131, 141, 0.02) 35px, rgba(181, 131, 141, 0.02) 70px),
+        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(181, 131, 141, 0.02) 35px, rgba(181, 131, 141, 0.02) 70px);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .invite-page {
@@ -43,6 +64,8 @@
       align-items: center;
       justify-content: center;
       padding: 32px 16px;
+      position: relative;
+      z-index: 1;
     }
 
     .invite-card {
@@ -50,10 +73,73 @@
       width: 100%;
       background: var(--bg-soft);
       border-radius: 26px;
-      border: 1px solid var(--border-subtle);
+      border: 2px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
-      padding: 32px 28px 30px;
+      padding: 40px 32px 36px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Islamic geometric corner ornaments */
+    .invite-card::before,
+    .invite-card::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z' fill='%23b5838d' opacity='0.15'/%3E%3Ccircle cx='50' cy='50' r='15' fill='none' stroke='%23b5838d' stroke-width='1' opacity='0.2'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.6;
+    }
+
+    .invite-card::before {
+      top: -10px;
+      left: -10px;
+    }
+
+    .invite-card::after {
+      bottom: -10px;
+      right: -10px;
+      transform: rotate(180deg);
+    }
+
+    /* Decorative border pattern */
+    .card-border-decoration {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid rgba(181, 131, 141, 0.15);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .card-border-decoration::before,
+    .card-border-decoration::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 1px solid rgba(181, 131, 141, 0.2);
+    }
+
+    .card-border-decoration::before {
+      top: -1px;
+      left: -1px;
+      border-right: none;
+      border-bottom: none;
+      border-top-left-radius: 20px;
+    }
+
+    .card-border-decoration::after {
+      bottom: -1px;
+      right: -1px;
+      border-left: none;
+      border-top: none;
+      border-bottom-right-radius: 20px;
     }
 
     .invite-monogram {
@@ -64,6 +150,31 @@
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 6px;
+      position: relative;
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid rgba(181, 131, 141, 0.25);
+      border-radius: 4px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 229, 236, 0.15));
+    }
+
+    .invite-monogram::before,
+    .invite-monogram::after {
+      content: '✦';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent-gold);
+      font-size: 0.7rem;
+      opacity: 0.5;
+    }
+
+    .invite-monogram::before {
+      left: 6px;
+    }
+
+    .invite-monogram::after {
+      right: 6px;
     }
 
     .invite-eyebrow {
@@ -91,11 +202,15 @@
     }
 
     .divider {
-      width: 60%;
-      max-width: 220px;
-      height: 1px;
-      margin: 18px auto 20px;
-      background: linear-gradient(to right, transparent, var(--accent-soft), transparent);
+      width: 80%;
+      max-width: 280px;
+      height: 40px;
+      margin: 24px auto 28px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40'%3E%3Cg fill='%23b5838d' opacity='0.3'%3E%3Cpath d='M200 5 L205 15 L215 20 L205 25 L200 35 L195 25 L185 20 L195 15 Z'/%3E%3Cpath d='M160 10 L163 17 L170 20 L163 23 L160 30 L157 23 L150 20 L157 17 Z'/%3E%3Cpath d='M240 10 L243 17 L250 20 L243 23 L240 30 L237 23 L230 20 L237 17 Z'/%3E%3Cpath d='M120 15 L122 19 L126 20 L122 21 L120 25 L118 21 L114 20 L118 19 Z'/%3E%3Cpath d='M280 15 L282 19 L286 20 L282 21 L280 25 L278 21 L274 20 L278 19 Z'/%3E%3C/g%3E%3Cline x1='0' y1='20' x2='110' y2='20' stroke='%23b5838d' stroke-width='0.5' opacity='0.3'/%3E%3Cline x1='290' y1='20' x2='400' y2='20' stroke='%23b5838d' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      position: relative;
     }
 
     .invite-subtitle {
@@ -198,6 +313,7 @@
         padding: 24px 18px 22px;
         border-radius: 20px;
       }
+
       .invite-names {
         font-size: 1.85rem;
       }
@@ -206,7 +322,8 @@
     /* Print styles: make it a clean card for PDF/printing */
     @media print {
       @page {
-        size: 5in 7in; /* you can change to 'letter portrait' if you prefer full page */
+        size: 5in 7in;
+        /* you can change to 'letter portrait' if you prefer full page */
         margin: 0.5in;
       }
 
@@ -228,7 +345,8 @@
       }
 
       .rsvp-button {
-        display: none !important; /* hide the web-only button when printing */
+        display: none !important;
+        /* hide the web-only button when printing */
       }
 
       .footer-small {
@@ -237,9 +355,12 @@
     }
   </style>
 </head>
+
 <body>
   <div class="invite-page">
     <div class="invite-card">
+      <div class="card-border-decoration"></div>
+
       <div class="invite-monogram">R &amp; T</div>
       <div class="invite-eyebrow">We’re getting married</div>
 
@@ -273,12 +394,7 @@
         <p class="invite-line">
           Kindly RSVP by <strong>November 30, 2025</strong>.
         </p>
-        <a
-          class="rsvp-button"
-          href="https://forms.gle/your-rsvp-form-here"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a class="rsvp-button" href="https://forms.gle/your-rsvp-form-here" target="_blank" rel="noreferrer">
           RSVP online
         </a>
       </div>
@@ -292,5 +408,5 @@
     </div>
   </div>
 </body>
-</html>
 
+</html>
