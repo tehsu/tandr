@@ -177,6 +177,37 @@
       right: 6px;
     }
 
+    .bismillah {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+      line-height: 1.6;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    .bismillah::before,
+    .bismillah::after {
+      content: '◆';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.5rem;
+      opacity: 0.4;
+      color: var(--accent);
+    }
+
+    .bismillah::before {
+      left: 0;
+    }
+
+    .bismillah::after {
+      right: 0;
+    }
+
     .invite-eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.18em;
@@ -360,6 +391,8 @@
   <div class="invite-page">
     <div class="invite-card">
       <div class="card-border-decoration"></div>
+
+      <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
       <div class="invite-monogram">R &amp; T</div>
       <div class="invite-eyebrow">We’re getting married</div>
