@@ -10,20 +10,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap"
     rel="stylesheet">
   <style>
     :root {
-      --bg: #f7f5f2;
-      --bg-soft: #ffffff;
+      --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      --card-bg: rgba(255, 255, 255, 0.85);
       --accent: #b5838d;
-      --accent-soft: #ffe5ec;
-      --accent-gold: #d4af37;
-      --text-main: #252422;
-      --text-muted: #66615b;
-      --border-subtle: #e0ded8;
-      --radius-lg: 18px;
-      --shadow-soft: 0 18px 35px rgba(15, 10, 6, 0.12);
+      --accent-dark: #9d6b75;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --text-main: #2c2c2c;
+      --text-muted: #6e6e6e;
+      --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.08);
+      --shadow-premium: 0 25px 50px -12px rgba(181, 131, 141, 0.15);
+      --border: rgba(255, 255, 255, 0.6);
     }
 
     * {
@@ -34,353 +35,354 @@
     body {
       margin: 0;
       padding: 0;
+      height: 100%;
     }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Inter", sans-serif;
       color: var(--text-main);
-      background: radial-gradient(circle at top left, #fffdf8 0, #f7f5f2 45%, #f0ece7 100%);
+      background: #f9f7f5;
+      background-image:
+        radial-gradient(at 0% 0%, hsla(350, 49%, 92%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(42, 49%, 92%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(350, 49%, 92%, 1) 0, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(42, 49%, 92%, 1) 0, transparent 50%);
+      background-attachment: fixed;
       -webkit-font-smoothing: antialiased;
-      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    body::before {
-      content: '';
+    /* Subtle texture overlay */
+    body::after {
+      content: "";
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(181, 131, 141, 0.02) 35px, rgba(181, 131, 141, 0.02) 70px),
-        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(181, 131, 141, 0.02) 35px, rgba(181, 131, 141, 0.02) 70px);
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b5838d' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 0;
     }
 
-    .invite-page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 16px;
+    .invite-container {
       position: relative;
-      z-index: 1;
+      z-index: 10;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      perspective: 1000px;
     }
 
     .invite-card {
-      max-width: 540px;
       width: 100%;
-      background: var(--bg-soft);
-      border-radius: 26px;
-      border: 2px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      padding: 40px 32px 36px;
+      max-width: 580px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 60px 40px;
       text-align: center;
+      box-shadow: var(--shadow-premium),
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.4);
       position: relative;
       overflow: hidden;
+      animation: cardEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+      transform: translateY(30px);
     }
 
-    /* Islamic geometric corner ornaments */
-    .invite-card::before,
-    .invite-card::after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z' fill='%23b5838d' opacity='0.15'/%3E%3Ccircle cx='50' cy='50' r='15' fill='none' stroke='%23b5838d' stroke-width='1' opacity='0.2'/%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.6;
+    @keyframes cardEnter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .invite-card::before {
-      top: -10px;
-      left: -10px;
-    }
-
-    .invite-card::after {
-      bottom: -10px;
-      right: -10px;
-      transform: rotate(180deg);
-    }
-
-    /* Decorative border pattern */
-    .card-border-decoration {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      border: 1px solid rgba(181, 131, 141, 0.15);
-      border-radius: 20px;
-      pointer-events: none;
-    }
-
-    .card-border-decoration::before,
-    .card-border-decoration::after {
-      content: '';
+    /* Decorative border corners (Islamic/Geometric inspired) */
+    .corner-decor {
       position: absolute;
       width: 60px;
       height: 60px;
-      border: 1px solid rgba(181, 131, 141, 0.2);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Cpath d='M0 0 V20 Q0 0 20 0 H50' fill='none' stroke='%23d4af37' stroke-width='1' stroke-opacity='0.5' /%3E%3Cpath d='M5 5 L5 15 Q5 5 15 5 L25 5' fill='none' stroke='%23b5838d' stroke-width='1' stroke-opacity='0.4' /%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      pointer-events: none;
     }
 
-    .card-border-decoration::before {
-      top: -1px;
-      left: -1px;
-      border-right: none;
-      border-bottom: none;
-      border-top-left-radius: 20px;
+    .corner-tl {
+      top: 15px;
+      left: 15px;
     }
 
-    .card-border-decoration::after {
-      bottom: -1px;
-      right: -1px;
-      border-left: none;
-      border-top: none;
-      border-bottom-right-radius: 20px;
+    .corner-tr {
+      top: 15px;
+      right: 15px;
+      transform: scaleX(-1);
     }
 
-    .invite-monogram {
-      font-family: "Playfair Display", serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-      position: relative;
-      display: inline-block;
-      padding: 8px 20px;
-      border: 1px solid rgba(181, 131, 141, 0.25);
-      border-radius: 4px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 229, 236, 0.15));
+    .corner-bl {
+      bottom: 15px;
+      left: 15px;
+      transform: scaleY(-1);
     }
 
-    .invite-monogram::before,
-    .invite-monogram::after {
-      content: '✦';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--accent-gold);
-      font-size: 0.7rem;
-      opacity: 0.5;
-    }
-
-    .invite-monogram::before {
-      left: 6px;
-    }
-
-    .invite-monogram::after {
-      right: 6px;
+    .corner-br {
+      bottom: 15px;
+      right: 15px;
+      transform: scale(-1);
     }
 
     .bismillah {
       font-family: "Playfair Display", serif;
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: var(--accent-gold);
-      margin-bottom: 20px;
-      letter-spacing: 0.05em;
-      line-height: 1.6;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0.9;
       position: relative;
-      padding: 0 20px;
+      display: inline-block;
+      animation: fadeIn 1.5s ease-out 0.4s forwards;
+      opacity: 0;
     }
 
-    .bismillah::before,
-    .bismillah::after {
-      content: '◆';
+    .monogram {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      background: linear-gradient(135deg, #fff 0%, #fffbf0 100%);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+      position: relative;
+    }
+
+    .monogram::after {
+      content: "";
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.5rem;
-      opacity: 0.4;
-      color: var(--accent);
+      inset: 4px;
+      border: 1px thin rgba(181, 131, 141, 0.2);
+      border-radius: 50%;
     }
 
-    .bismillah::before {
-      left: 0;
-    }
-
-    .bismillah::after {
-      right: 0;
-    }
-
-    .invite-eyebrow {
+    .eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.68rem;
+      letter-spacing: 3px;
+      font-size: 0.75rem;
       color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .invite-names {
-      font-family: "Playfair Display", serif;
-      font-size: 2.1rem;
-      margin: 0 0 6px;
-    }
-
-    .invite-ampersand {
-      letter-spacing: 0.1em;
-    }
-
-    .invite-date-location {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      margin: 0 0 18px;
-    }
-
-    .divider {
-      width: 80%;
-      max-width: 280px;
-      height: 40px;
-      margin: 24px auto 28px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40'%3E%3Cg fill='%23b5838d' opacity='0.3'%3E%3Cpath d='M200 5 L205 15 L215 20 L205 25 L200 35 L195 25 L185 20 L195 15 Z'/%3E%3Cpath d='M160 10 L163 17 L170 20 L163 23 L160 30 L157 23 L150 20 L157 17 Z'/%3E%3Cpath d='M240 10 L243 17 L250 20 L243 23 L240 30 L237 23 L230 20 L237 17 Z'/%3E%3Cpath d='M120 15 L122 19 L126 20 L122 21 L120 25 L118 21 L114 20 L118 19 Z'/%3E%3Cpath d='M280 15 L282 19 L286 20 L282 21 L280 25 L278 21 L274 20 L278 19 Z'/%3E%3C/g%3E%3Cline x1='0' y1='20' x2='110' y2='20' stroke='%23b5838d' stroke-width='0.5' opacity='0.3'/%3E%3Cline x1='290' y1='20' x2='400' y2='20' stroke='%23b5838d' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      position: relative;
-    }
-
-    .invite-subtitle {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .invite-line {
-      margin: 2px 0;
-    }
-
-    .invite-line strong {
-      font-weight: 600;
-    }
-
-    .event-details {
-      margin: 14px 0 20px;
-    }
-
-    .event-name {
-      font-family: "Playfair Display", serif;
-      font-size: 1.35rem;
+      margin-bottom: 1rem;
       font-weight: 500;
+      animation: slideUp 1s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+
+    h1.names {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin: 0.5rem 0 1rem;
+      line-height: 1.1;
+      font-weight: 500;
+      background: linear-gradient(135deg, #2c2c2c 30%, #5a5a5a 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: var(--text-main);
+      /* fallback */
+      animation: slideUp 1s ease-out 0.8s forwards;
+      opacity: 0;
+    }
+
+    .ampersand {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+      font-size: 0.8em;
+      -webkit-text-fill-color: var(--gold);
+    }
+
+    .date-location {
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(181, 131, 141, 0.2);
+      background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.4) 0, transparent 70%);
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      background-position: bottom center;
+      animation: slideUp 1s ease-out 1s forwards;
+      opacity: 0;
+    }
+
+    .invite-message {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 2rem;
+    }
+
+    .event-card {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 1.5rem 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1.2s ease-out 1.2s forwards;
+      opacity: 0;
+    }
+
+    .event-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .event-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
       color: var(--accent);
-      margin: 0 0 8px;
-      letter-spacing: 0.02em;
+      margin: 0 0 0.5rem;
     }
 
     .event-time {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--text-main);
-      margin: 0;
-      letter-spacing: 0.03em;
-    }
-
-    .invite-parents {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-top: 20px;
-      line-height: 1.5;
-    }
-
-    .invite-section {
-      margin-top: 18px;
-    }
-
-    .invite-section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.05rem;
-      margin-bottom: 6px;
-    }
-
-    .invite-venue {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .invite-note {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    .rsvp-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 18px;
-      padding: 9px 18px;
-      border-radius: 999px;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       font-weight: 500;
-      text-decoration: none;
-      background: var(--accent);
-      color: #fff;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid transparent;
-      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, background 0.12s ease-out;
+      margin-bottom: 1rem;
     }
 
-    .rsvp-button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 22px 40px rgba(181, 131, 141, 0.35);
-    }
-
-    .footer-small {
-      margin-top: 16px;
-      font-size: 0.78rem;
+    .event-address {
+      font-size: 0.9rem;
+      line-height: 1.6;
       color: var(--text-muted);
     }
 
-    /* Small screens */
+    .rsvp-section {
+      margin-top: 3rem;
+      animation: slideUp 1s ease-out 1.4s forwards;
+      opacity: 0;
+    }
+
+    .rsvp-text {
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-rsvp {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      color: white;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(181, 131, 141, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-rsvp::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-rsvp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(181, 131, 141, 0.4);
+    }
+
+    .btn-rsvp:hover::before {
+      opacity: 1;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      animation: fadeIn 1.5s ease-out 1.6s forwards;
+      opacity: 0;
+      /* Wait for animation */
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 0.6;
+        /* Matches the initial opacity of footer, or simply 1 for others*/
+      }
+    }
+
+    /* Special override for elements that need full opacity */
+    .bismillah,
+    .monogram,
+    .event-card,
+    .rsvp-section {
+      animation-name: fadeInFull;
+    }
+
+    @keyframes fadeInFull {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 480px) {
       .invite-card {
-        padding: 24px 18px 22px;
-        border-radius: 20px;
+        padding: 40px 24px;
       }
 
-      .invite-names {
-        font-size: 1.85rem;
+      h1.names {
+        font-size: 2.5rem;
       }
     }
 
-    /* Print styles: make it a clean card for PDF/printing */
     @media print {
-      @page {
-        size: 5in 7in;
-        /* you can change to 'letter portrait' if you prefer full page */
-        margin: 0.5in;
-      }
-
       body {
-        background: #ffffff !important;
-      }
-
-      .invite-page {
-        padding: 0;
-        align-items: stretch;
+        background: white;
       }
 
       .invite-card {
         box-shadow: none;
-        border-radius: 0;
-        border: 1px solid #dddddd;
-        max-width: none;
-        width: 100%;
+        border: 1px solid #ccc;
       }
 
-      .rsvp-button {
-        display: none !important;
-        /* hide the web-only button when printing */
-      }
-
-      .footer-small {
+      .btn-rsvp {
         display: none;
       }
     }
@@ -388,56 +390,53 @@
 </head>
 
 <body>
-  <div class="invite-page">
+  <div class="invite-container">
     <div class="invite-card">
-      <div class="card-border-decoration"></div>
+      <div class="corner-decor corner-tl"></div>
+      <div class="corner-decor corner-tr"></div>
+      <div class="corner-decor corner-bl"></div>
+      <div class="corner-decor corner-br"></div>
+
+      <div class="monogram">R&amp;T</div>
 
       <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
-      <div class="invite-monogram">R &amp; T</div>
-      <div class="invite-eyebrow">We’re getting married</div>
+      <div class="eyebrow">The Wedding Of</div>
 
-      <h1 class="invite-names">
-        Raiyan <span class="invite-ampersand">&amp;</span> Tehseen
+      <h1 class="names">
+        Raiyan <span class="ampersand">&amp;</span> Tehseen
       </h1>
 
-      <p class="invite-date-location">
+      <div class="date-location">
         Friday, December 19, 2025 • Boca Raton, Florida
-      </p>
-
-      <div class="divider"></div>
-
-      <p class="invite-subtitle">You are warmly invited to celebrate with us</p>
-      <div class="event-details">
-        <p class="event-name">Nikah &amp; Reception</p>
-        <p class="event-time">4:00 PM</p>
       </div>
 
+      <div class="invite-message">
+        Request the honor of your presence<br>to share in their joy
+      </div>
 
-      <div class="invite-section">
-        <div class="invite-section-title">Venue</div>
-        <p class="invite-venue">
-          Boca Falls Clubhouse<br />
+      <div class="event-card">
+        <h2 class="event-title">Nikah &amp; Reception</h2>
+        <div class="event-time">4:00 PM</div>
+        <div class="event-address">
+          <strong>Boca Falls Clubhouse</strong><br />
           21700 Boca Falls Dr<br />
           Boca Raton, FL, 33428
-        </p>
+        </div>
       </div>
 
-      <div class="invite-section">
-        <p class="invite-line">
-          Kindly RSVP by <strong>November 30, 2025</strong>.
+      <div class="rsvp-section">
+        <p class="rsvp-text">
+          Kindly respond by <strong>November 30, 2025</strong>
         </p>
-        <a class="rsvp-button" href="https://forms.gle/your-rsvp-form-here" target="_blank" rel="noreferrer">
-          RSVP online
+        <a href="https://forms.gle/your-rsvp-form-here" class="btn-rsvp" target="_blank" rel="noreferrer">
+          RSVP Online
         </a>
       </div>
 
-      <p class="invite-parents">
-        We can’t wait to celebrate with you.<br />
-        — Raiyan &amp; Tehseen
-      </p>
-
-      <p class="footer-small">© 2025 Raiyan &amp; Tehseen</p>
+      <div class="footer">
+        With love from our families to yours
+      </div>
     </div>
   </div>
 </body>
