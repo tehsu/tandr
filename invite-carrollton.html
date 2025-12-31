@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Raiyan &amp; Tehseen — Invitation (Carrollton)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Wedding invitation for Raiyan &amp; Tehseen in Carrollton, Texas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --accent: #b5838d;
+      --accent-dark: #9d6b75;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --text-main: #2c2c2c;
+      --text-muted: #6e6e6e;
+      --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.08);
+      --shadow-premium: 0 25px 50px -12px rgba(181, 131, 141, 0.15);
+      --border: rgba(255, 255, 255, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text-main);
+      background: #f9f7f5;
+      background-image:
+        radial-gradient(at 0% 0%, hsla(350, 49%, 92%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(42, 49%, 92%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(350, 49%, 92%, 1) 0, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(42, 49%, 92%, 1) 0, transparent 50%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle texture overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b5838d' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .invite-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      perspective: 1000px;
+    }
+
+    .invite-card {
+      width: 100%;
+      max-width: 580px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: var(--shadow-premium),
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+      animation: cardEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes cardEnter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Decorative border corners (Islamic/Geometric inspired) */
+    .corner-decor {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Cpath d='M0 0 V20 Q0 0 20 0 H50' fill='none' stroke='%23d4af37' stroke-width='1' stroke-opacity='0.5' /%3E%3Cpath d='M5 5 L5 15 Q5 5 15 5 L25 5' fill='none' stroke='%23b5838d' stroke-width='1' stroke-opacity='0.4' /%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+
+    .corner-tl {
+      top: 15px;
+      left: 15px;
+    }
+
+    .corner-tr {
+      top: 15px;
+      right: 15px;
+      transform: scaleX(-1);
+    }
+
+    .corner-bl {
+      bottom: 15px;
+      left: 15px;
+      transform: scaleY(-1);
+    }
+
+    .corner-br {
+      bottom: 15px;
+      right: 15px;
+      transform: scale(-1);
+    }
+
+    .bismillah {
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      position: relative;
+      display: inline-block;
+      animation: fadeIn 1.5s ease-out 0.4s forwards;
+      opacity: 0;
+    }
+
+    .monogram {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      background: linear-gradient(135deg, #fff 0%, #fffbf0 100%);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+      position: relative;
+    }
+
+    .monogram::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px thin rgba(181, 131, 141, 0.2);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-weight: 500;
+      animation: slideUp 1s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+
+    h1.names {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin: 0.5rem 0 1rem;
+      line-height: 1.1;
+      font-weight: 500;
+      background: linear-gradient(135deg, #2c2c2c 30%, #5a5a5a 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: var(--text-main);
+      /* fallback */
+      animation: slideUp 1s ease-out 0.8s forwards;
+      opacity: 0;
+    }
+
+    .ampersand {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+      font-size: 0.8em;
+      -webkit-text-fill-color: var(--gold);
+    }
+
+    .date-location {
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(181, 131, 141, 0.2);
+      background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.4) 0, transparent 70%);
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      background-position: bottom center;
+      animation: slideUp 1s ease-out 1s forwards;
+      opacity: 0;
+    }
+
+    .invite-message {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 2rem;
+    }
+
+    .event-card {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 1.5rem 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1.2s ease-out 1.2s forwards;
+      opacity: 0;
+    }
+
+    .event-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .event-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin: 0 0 0.5rem;
+    }
+
+    .event-time {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .event-address {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .rsvp-section {
+      margin-top: 3rem;
+      animation: slideUp 1s ease-out 1.4s forwards;
+      opacity: 0;
+    }
+
+    .rsvp-text {
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-rsvp {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      color: white;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(181, 131, 141, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-rsvp::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-rsvp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(181, 131, 141, 0.4);
+    }
+
+    .btn-rsvp:hover::before {
+      opacity: 1;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      animation: fadeIn 1.5s ease-out 1.6s forwards;
+      opacity: 0;
+      /* Wait for animation */
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 0.6;
+        /* Matches the initial opacity of footer, or simply 1 for others*/
+      }
+    }
+
+    /* Special override for elements that need full opacity */
+    .bismillah,
+    .monogram,
+    .event-card,
+    .rsvp-section {
+      animation-name: fadeInFull;
+    }
+
+    @keyframes fadeInFull {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .invite-card {
+        padding: 40px 24px;
+      }
+
+      h1.names {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .invite-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+
+      .btn-rsvp {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="invite-container">
+    <div class="invite-card">
+      <div class="corner-decor corner-tl"></div>
+      <div class="corner-decor corner-tr"></div>
+      <div class="corner-decor corner-bl"></div>
+      <div class="corner-decor corner-br"></div>
+
+      <div class="monogram">R&amp;T</div>
+
+      <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+
+      <div class="eyebrow">The Wedding Of</div>
+
+      <h1 class="names">
+        Raiyan <span class="ampersand">&amp;</span> Tehseen
+      </h1>
+
+      <div class="date-location">
+        Saturday, June 13, 2026 • Carrollton, Texas
+      </div>
+
+      <div class="invite-message">
+        Request the honor of your presence<br>to share in their joy
+      </div>
+
+      <div class="event-card">
+        <h2 class="event-title">Nikah &amp; Reception</h2>
+        <div class="event-time">4:00 PM</div>
+        <div class="event-address">
+          <strong>1800 Golden Trail</strong><br />
+          Carrollton, TX 75010
+        </div>
+      </div>
+
+      <div class="rsvp-section">
+        <p class="rsvp-text">
+          Kindly respond by <strong>April 30, 2026</strong>
+        </p>
+        <a href="https://forms.gle/your-rsvp-form-here" class="btn-rsvp" target="_blank" rel="noreferrer">
+          RSVP Online
+        </a>
+      </div>
+
+      <div class="footer">
+        With love from our families to yours
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
